@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Build Path: /app/.heroku/python/
+# Build Deps: libraries/autoconf
 
 OUT_PREFIX=$1
 
@@ -10,12 +11,14 @@ hash -r
 
 echo "Building libffi..."
 
-SOURCE_TARBALL='https://cl.ly/2s1t1u3v0N0I/download/libffi-3.1.tar'
+SOURCE_TARBALL='https://github.com/atgreen/libffi/archive/master.tar.gz'
 
-curl -L $SOURCE_TARBALL | tar x
+curl -L $SOURCE_TARBALL | tar xz
+mv libffi-master libffi
 
-cd libffi-3.1
-./configure --prefix=$OUT_PREFIX --disable-static &&
+cd libffi
+./autogen.sh
+./configure --prefix=$OUT_PREFIX --enable-shared
 make
 make install
 

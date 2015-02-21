@@ -36,9 +36,7 @@ if (grep -iq -e "numpy" -e "scipy" -e "pandas" requirements.txt) then
   export LAPACK=$(pwd)/vendor/lib/atlas-base/atlas/liblapack.a
   export ATLAS=$(pwd)/vendor/lib/atlas-base/libatlas.a
   export LIBRARY_PATH=$(pwd)/vendor/lib:$(pwd)/lib/atlas-base:$(pwd)/lib/atlas-base/atlas:$LIBRARY_PATH
-  export LIBRARY_PATH=/app/.heroku/vendor/lib:/app/.heroku/lib/atlas-base:/app/.heroku/lib/atlas-base/atlas:$LIBRARY_PATH
   export LD_LIBRARY_PATH=$(pwd)/vendor/lib:$(pwd)/vendor/lib/atlas-base:$(pwd)/vendor/lib/atlas-base/atlas:$LD_LIBRARY_PATH
-  export LD_LIBRARY_PATH=/app/.heroku/vendor/lib/atlas-base/atlas:/app/.heroku/vendor/lib/atlas-base:/app/.heroku/vendor/lib:$LD_LIBRARY_PATH
   
   cd $VENDORED_GIT_NAME
   git pull origin
@@ -54,8 +52,7 @@ if (grep -iq -e "numpy" -e "scipy" -e "pandas" requirements.txt) then
 
     cd ../python
     tar xf "../$VENDORED_GIT_NAME/$NAME.tar.gz"
-    echo "-----> Completed Creating/downloading $PACKAGE by unzipping $VENDORED_GIT_NAME/$NAME.tar.gz. to $(pwd)"
-    echo "$(ls)"
+    echo "-----> Completed Creating/downloading $PACKAGE by unzipping $VENDORED_GIT_NAME/$NAME.tar.gz."
     cd ..
   done
   rm -rf $VENDORED_GIT_NAME
