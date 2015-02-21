@@ -14,7 +14,7 @@ VENDORED_GIT_REPO="https://github.com/joshowen/$VENDORED_GIT_NAME.git"
 # The location of the pre-compiled atlas/lapack/blas/gfortran binaries.
 VENDORED_BINARIES="npscipy"
 
-PACKAGES=("bottleneck-0.8.0" "numexpr-2.4" "numpy-1.8.1" "pandas-0.14.1" "sklearn-0.14.1" "scipy-0.14.0")
+PACKAGES=("bottleneck-0.7.0" "numexpr-2.2.2" "numpy-1.8.0" "pandas-0.12.0" "sklearn-0.14.1" "scipy-0.13.2")
 
 if (grep -iq -e "numpy" -e "scipy" -e "pandas" requirements.txt) then
   echo "-----> Noticed numpy/scipy/pandas/scikit-learn. Bootstrapping prebuilt binaries."
